@@ -34,21 +34,21 @@ class _TaskScreenState extends State<TaskScreen> {
       }
       return [];
     } else {
-      throw Exception("Lỗi kết nối: ${response.statusCode}");
+      throw Exception("Fail to connect: ${response.statusCode}");
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Danh sách Subtasks")),
+      appBar: AppBar(title: Text(" Subtasks")),
       body: FutureBuilder<List<dynamic>>(
         future: fetchTasks(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            return Center(child: Text("Lỗi: ${snapshot.error}"));
+            return Center(child: Text("Error: ${snapshot.error}"));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
             return EmptyView(); // Gọi trang trống khi không có dữ liệu
           } else {
@@ -72,12 +72,12 @@ class _TaskScreenState extends State<TaskScreen> {
                     margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                     child: ListTile(
                       title: Text(
-                        task["title"] ?? "Không có tiêu đề",
+                        task["title"] ?? "No Tittles",
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       subtitle: Text(task["isCompleted"] == true
-                          ? "Hoàn thành"
-                          : "Chưa xong"),
+                          ? "Complete"
+                          : "Incomplete"),
                       trailing: Icon(Icons.arrow_forward_ios),
                     ),
                   ),
@@ -102,7 +102,7 @@ class EmptyView extends StatelessWidget {
           Icon(Icons.inbox, size: 80, color: Colors.grey),
           SizedBox(height: 16),
           Text(
-            "Không có dữ liệu!",
+            "No Task Yet!",
             style: TextStyle(fontSize: 18, color: Colors.grey),
           ),
         ],
@@ -120,24 +120,24 @@ class DetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Chi tiết Subtask")),
+      appBar: AppBar(title: Text("Detail Subtask")),
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              task["title"] ?? "Không có tiêu đề",
+              task["title"] ?? "No tittle",
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8),
             Text(
-              task["isCompleted"] == true ? "Hoàn thành" : "Chưa xong",
+              task["isCompleted"] == true ? "Complete" : "Incomplete",
               style: TextStyle(fontSize: 18, color: Colors.grey[700]),
             ),
             SizedBox(height: 16),
             Text(
-              "Mô tả: ${task["description"] ?? "Không có mô tả"}",
+              "Detail: ${task["description"] ?? "No description"}",
               style: TextStyle(fontSize: 16),
             ),
           ],
