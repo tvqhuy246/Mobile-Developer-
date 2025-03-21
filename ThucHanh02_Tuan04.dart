@@ -14,7 +14,7 @@ class TaskScreen extends StatefulWidget {
 class _TaskScreenState extends State<TaskScreen> {
   Future<List<dynamic>> fetchTasks() async {
     final response =
-    await http.get(Uri.parse("https://amock.io/api/researchUTH/task"));
+    await http.get(Uri.parse("https://amock.io/api/researchUTH/tasks"));
 
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
