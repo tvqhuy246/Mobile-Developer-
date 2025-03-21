@@ -22,6 +22,7 @@ class _TaskScreenState extends State<TaskScreen> {
       if (data is Map<String, dynamic> && data.containsKey("data")) {
         final taskData = data["data"];
 
+        List<dynamic> result = [];
         if (taskData is List) {
           return taskData;
         }
@@ -29,13 +30,20 @@ class _TaskScreenState extends State<TaskScreen> {
         if (taskData is Map<String, dynamic> &&
             taskData.containsKey("subtasks") &&
             taskData["subtasks"] is List) {
-          return taskData["subtasks"];
+          result.addAll(taskData["subtasks"]);
         }
+
+        if (taskData is Map<String, dynamic> &&
+            taskData.containsKey("attachments") &&
+            taskData["attachments"] is List) {
+          result.addAll(taskData["attachments"]);
+        }
+
+        return result;
       }
-      return [];
-    } else {
-      throw Exception("Fail to connect: ${response.statusCode}");
     }
+      throw Exception("Fail to connect: ${response.statusCode}");
+
   }
 
   @override
@@ -119,6 +127,7 @@ class DetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<dynamic> attachments = task["attachments"] ?? []; // Lấy danh sách attachments
     return Scaffold(
       appBar: AppBar(title: Text("Detail Subtask")),
       body: Padding(
@@ -140,6 +149,31 @@ class DetailScreen extends StatelessWidget {
               "Detail: ${task["description"] ?? "No description"}",
               style: TextStyle(fontSize: 16),
             ),
+            if (attachments.isNotEmpty) ...[
+              Text(
+                "Attachments:",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 8),
+              Column(
+                children: attachments.map((attachment) {
+                  return ListTile(
+                    leading: Icon(Icons.attach_file, color: Colors.blue),
+                    title: Text(attachment["fileName"] ?? "Unknown File"),
+                    subtitle: Text(attachment["fileUrl"] ?? "No URL"),
+                    onTap: () {
+                      // Mở file khi click vào
+                      print("Opening: ${attachment["fileUrl"]}");
+                    },
+                  );
+                }).toList(),
+              ),
+            ] else ...[
+              Text(
+                "No attachments available",
+                style: TextStyle(fontSize: 16, color: Colors.grey),
+              ),
+            ],
           ],
         ),
       ),
