@@ -157,7 +157,7 @@ class _TaskScreenState extends State<TaskScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset("assets/no_tasks.png", height: 150),
+          Icon(Icons.inbox, size: 80, color: Colors.grey),
           SizedBox(height: 10),
           Text(
             "No Tasks Yet!",
@@ -185,7 +185,7 @@ class _TaskScreenState extends State<TaskScreen> {
         );
       },
       child: Card(
-        color: colors[index % colors.length],
+        color: Colors.primaries[index % Colors.primaries.length],//random colors
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         margin: EdgeInsets.symmetric(vertical: 8),
         child: Padding(
