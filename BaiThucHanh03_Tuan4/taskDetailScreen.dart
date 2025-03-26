@@ -13,7 +13,7 @@ class TaskDetailScreen extends StatelessWidget {
         title: Text(
           "Detail",
           style: TextStyle(
-            color: Colors.blue,
+            color: Colors.green,
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
@@ -77,13 +77,29 @@ class TaskDetailScreen extends StatelessWidget {
               "Attachments",
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            _buildAttachment("document_1_0.pdf"),
+            _buildAttachmentButton("document_1_0.pdf"),
           ],
         ),
       ),
     );
   }
-
+  Widget _buildAttachmentButton(String fileName) {
+    return ElevatedButton.icon(
+      onPressed: () {
+        print("Clicked on: $fileName");
+      },
+      icon: Icon(Icons.attach_file, color: Colors.white),
+      label: Text(fileName),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+      ),
+    );
+  }
   Widget _buildInfoItem(IconData icon, String title, String value) {
     return Column(
       children: [
