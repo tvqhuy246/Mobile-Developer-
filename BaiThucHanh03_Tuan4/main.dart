@@ -48,7 +48,7 @@ class _SplashScreenState extends State<SplashScreen>
     });
   }
 
-  @override
+  @override//dọn dẹp bộ nhớ
   void dispose() {
     _controller.dispose();
     super.dispose();
@@ -77,7 +77,7 @@ class _SplashScreenState extends State<SplashScreen>
                 style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
-                  color: Colors.blue,
+                  color: Colors.green,
                 ),
               ),
             ),
@@ -96,7 +96,7 @@ class HomeScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         title: Row(
           children: [
-            Icon(Icons.notifications),
+            Icon(Icons.email),
             SizedBox(width: 10),
             Text("Notifications"),
             Spacer(), // Đẩy nút "Skip" về bên phải
@@ -113,7 +113,7 @@ class HomeScreen extends StatelessWidget {
               ),
               child: Text(
                 "Skip",
-                style: TextStyle(color: Color.fromARGB(255, 41, 143, 211)),
+                style: TextStyle(color: Color.fromARGB(255, 143, 41, 111)),
               ),
             ),
           ],
@@ -163,7 +163,7 @@ class HomeScreen extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.all(15),
                     fixedSize: Size(250, 50),
-                    backgroundColor: Colors.blue,
+                    backgroundColor: Colors.green,
                   ),
                   child: Text(
                     "Next",
@@ -187,7 +187,7 @@ class Page1 extends StatelessWidget {
         automaticallyImplyLeading: false,
         title: Row(
           children: [
-            Icon(Icons.notifications),
+            Icon(Icons.email),
             SizedBox(width: 10),
             Text("Notifications"),
             Spacer(),
@@ -204,7 +204,7 @@ class Page1 extends StatelessWidget {
               ),
               child: Text(
                 "Skip",
-                style: TextStyle(color: Color.fromARGB(255, 41, 143, 211)),
+                style: TextStyle(color: Color.fromARGB(255, 143, 41, 111)),
               ),
             ),
           ],
@@ -258,7 +258,7 @@ class Page1 extends StatelessWidget {
                         shape: CircleBorder(),
                         padding: EdgeInsets.all(15),
                         fixedSize: Size(50, 50),
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Colors.green,
                       ),
                       child: Icon(Icons.arrow_back, color: Colors.white),
                     ),
@@ -272,7 +272,7 @@ class Page1 extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         padding: EdgeInsets.all(15),
                         fixedSize: Size(200, 50),
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Colors.green,
                       ),
                       child: Text(
                         "Next",
@@ -298,7 +298,7 @@ class Page2 extends StatelessWidget {
         automaticallyImplyLeading: false,
         title: Row(
           children: [
-            Icon(Icons.notifications),
+            Icon(Icons.email),
             SizedBox(width: 10),
             Text("Notifications"),
             Spacer(),
@@ -315,7 +315,7 @@ class Page2 extends StatelessWidget {
               ),
               child: Text(
                 "Skip",
-                style: TextStyle(color: Color.fromARGB(255, 41, 143, 211)),
+                style: TextStyle(color: Color.fromARGB(255, 143, 41, 111)),
               ),
             ),
           ],
@@ -369,7 +369,7 @@ class Page2 extends StatelessWidget {
                         shape: CircleBorder(),
                         padding: EdgeInsets.all(15),
                         fixedSize: Size(50, 50),
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Colors.green,
                       ),
                       child: Icon(Icons.arrow_back, color: Colors.white),
                     ),
@@ -383,7 +383,7 @@ class Page2 extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         padding: EdgeInsets.all(15),
                         fixedSize: Size(200, 50),
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Colors.green,
                       ),
                       child: Text(
                         "Get Started",
